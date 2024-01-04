@@ -6,7 +6,7 @@ WORKDIR /app
 COPY . .
 RUN npm install -g pnpm diff-so-fancy && \
   apt-get update -qq && \
-  apt-get install -y vim less gnupg2 locales tzdata sudo && \
+  apt-get install -y vim less postgresql-client locales tzdata sudo && \
   sed -i -e 's/# ja_JP.UTF-8 UTF-8/ja_JP.UTF-8 UTF-8/' /etc/locale.gen && \
   dpkg-reconfigure --frontend=noninteractive locales && \
   update-locale LANG=ja_JP.UTF-8 && \
