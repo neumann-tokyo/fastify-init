@@ -1,0 +1,18 @@
+FROM node:21
+
+ARG USERNAME=node
+
+WORKDIR /app
+COPY . .
+RUN npm install -g pnpm diff-so-fancy && \
+  apt-get update -qq && \
+  apt-get install -y vim less gnupg2 locales tzdata sudo && \
+  sed -i -e 's/# ja_JP.UTF-8 UTF-8/ja_JP.UTF-8 UTF-8/' /etc/locale.gen && \
+  dpkg-reconfigure --frontend=noninteractive locales && \
+  update-locale LANG=ja_JP.UTF-8 && \
+  ln -fs /usr/share/zoneinfo/Asia/Tokyo /etc/localtime && \
+  dpkg-reconfigure -f noninteractive tzdata && \
+  echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME && \
+  chmod 0440 /etc/sudoers.d/$USERNAME
+
+USER $USERNAME
