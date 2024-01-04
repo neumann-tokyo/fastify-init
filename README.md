@@ -4,5 +4,5 @@
 * [ ] devcontainer
 * [ ] PostgreSQL, migrate
 * [x] fastify
-* [ ] Biome, leafhook
-* [ ] node test
+* [x] Biome, leafhook
+* [x] node test
