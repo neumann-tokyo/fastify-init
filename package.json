@@ -10,19 +10,23 @@
   "scripts": {
     "test": "node --test test/**/*.test.js",
     "start": "fastify start -l info app.js",
-    "dev": "fastify start -w -l info -P app.js"
+    "dev": "fastify start -w -l info -P app.js",
+		"check": "biome check --apply .",
+    "postinstall": "lefthook install"
   },
   "keywords": [],
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "fastify": "^4.0.0",
-    "fastify-plugin": "^4.0.0",
     "@fastify/autoload": "^5.0.0",
     "@fastify/sensible": "^5.0.0",
-    "fastify-cli": "^6.0.0"
+    "fastify": "^4.0.0",
+    "fastify-cli": "^6.0.0",
+    "fastify-plugin": "^4.0.0"
   },
   "devDependencies": {
+    "@biomejs/biome": "^1.4.1",
+    "lefthook": "^1.5.5",
     "c8": "^7.13.0"
   }
 }
